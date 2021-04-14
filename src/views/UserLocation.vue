@@ -1,10 +1,13 @@
 <template>
-  <section class="user-location flex flex-col border border-gray-400 rounded p-4">
-    <h2 class="title text-black-500 text-lg uppercase ">Google map direction 🌍</h2>
-    <div class="form-wrap flex flex-col justify-start ">
-      <label for="inp-map" class="">Enter your Address</label>
-      <input type="text" id="inp-map" name="" class="">
-      <button type="submit" class="w-16 bg-red-400 p-1 mt-2 text-white text-lg">Go</button>
+  <section class="user-location border border-gray-400 rounded p-4">
+    <div class="form-wrap flex flex-col">
+      <h2 class="title text-black-500 text-lg uppercase ">Google map direction 🌍</h2>
+      
+      <TextForm :id="'form-address'" :isBlind="true" :label="'Enter Your Address'" />
+      <TextButton :title="'Go'" />
+    </div>
+    <div class="map">
+      
     </div>
   </section>
 </template>
