@@ -25,6 +25,10 @@ yarn build
 yarn serve
 ```
 
+### Deploy to netlify 🌍
+
+- 
+
 ### New features of Vue3 uses ✔
 
 - 
@@ -34,4 +38,26 @@ yarn serve
 ### New features of vite uses ✔
 
 - Please take a look closely to file `vite.config.js`, its contain some feature options good.
+```
+// Declare the path "@" instead of "/src"
+alias: [{find: "@", replacement: path.resolve(__dirname, '/src')}
+
+// Declare the path of variable source to use variable in style tag in components
+css: {
+  preprocessorOptions: {
+    scss: {
+      additionalData: `@import "./src/assets/stylesheets/_variables";` 
+    } 
+  } 
+},
+
+// 
+
+```
+- 
+
+
+### Plugin uses  ✔
+
+- `Auto import components` instead of declare in each files: https://github.com/antfu/vite-plugin-components
 - 
