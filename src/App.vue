@@ -1,7 +1,9 @@
 <template>
-  <router-view></router-view>
+  <main class="container">
+    <router-view></router-view>
+  </main>
 </template>
 
-<script>
+<style lang="scss" scoped>
 
-</script>
+</style>

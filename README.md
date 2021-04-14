@@ -25,6 +25,13 @@ yarn build
 yarn serve
 ```
 
-### New features of Vue3 use ✔
+### New features of Vue3 uses ✔
 
+- 
+-
+
+
+### New features of vite uses ✔
+
+- Please take a look closely to file `vite.config.js`, its contain some feature options good.
 - 
