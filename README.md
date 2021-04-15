@@ -60,4 +60,5 @@ css: {
 ### Plugin uses  ✔
 
 - `Auto import components` instead of declare in each files: https://github.com/antfu/vite-plugin-components
+- `Axios` 
 - 

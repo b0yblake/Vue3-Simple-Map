@@ -8,9 +8,11 @@
     "serve": "vite preview"
   },
   "dependencies": {
+    "axios": "^0.21.1",
+    "sass-resources-loader": "^2.1.0",
     "vue": "^3.0.5",
-    "vue-router": "^4.0.6",
-    "sass-resources-loader": "^2.1.0"
+    "vue-axios": "^3.2.4",
+    "vue-router": "^4.0.6"
   },
   "devDependencies": {
     "@tailwindcss/aspect-ratio": "^0.2.0",

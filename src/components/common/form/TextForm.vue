@@ -1,7 +1,10 @@
 <template>
   <div class="form-text flex flex-col justify-start ">
     <label for="{{ id }}" class="" v-show="!isBlind">{{ label }}</label>
-    <input type="text" id="{{ id }}" class="">
+    <input type="text" id="{{ id }}" class="border border-gray-400 p-2">
+
+    <!-- slot after input -->
+    <slot name="get_location"></slot>
   </div>
 </template>
 
