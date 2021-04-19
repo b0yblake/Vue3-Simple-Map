@@ -1,8 +1,8 @@
-import { API } from './configAPI';
+import { API_KEY, API_URL } from './configAPI';
 
 export const currentLocation = async (latitude = 0, longitude = 0) =>
   await fetch(
-    `https://maps.googleapis.com/maps/api/geocode/json?latlng=${latitude},${longitude}&key=${API}`
+    `${API_URL}/geocode/json?latlng=${latitude},${longitude}&key=${API_KEY}`
   )
   .then(
     function(response) {
