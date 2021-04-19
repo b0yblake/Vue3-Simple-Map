@@ -61,4 +61,5 @@ css: {
 
 - `Auto import components` instead of declare in each files: https://github.com/antfu/vite-plugin-components
 - `Axios` 
+- `Google Maps JavaScript API` & `Google Maps Geocoding API` & `Google Maps Places API` free trail 3 months.
 - 
