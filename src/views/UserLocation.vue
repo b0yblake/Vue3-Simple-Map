@@ -1,6 +1,6 @@
 <template>
   <section class="user-location border border-gray-400 rounded p-5 mt-20 ml-10 w-1/4 bg-white">
-    <form @submit.prevent="submitForm()">
+    <form @submit.prevent="">
       <div class="form-wrap flex flex-col">
         <h2 class="title text-black-500 text-lg uppercase ">Google map direction 🌍</h2>
 
@@ -13,7 +13,7 @@
         >
           <!-- slot after input -->
           <template #get_location>
-            <button type="button" @click="getLocator()" class="flex w-20 bg-red-400 p-1 mt-2 text-white text-lg">Get location</button>
+            <button type="button" @click="getLocator()" class="flex w-4/4 bg-red-400 p-1 mt-2 text-white text-lg">Get location</button>
           </template>
 
           <!-- slot spin -->
@@ -21,7 +21,25 @@
             Loading...
           </template>
         </TextForm>
-        <TextButton :title="'Go'"  />
+
+        <div class="form_text">
+          <select v-model="typeSearch">
+            <option value="restaurant">Nhà Hàng</option>
+            <option value="gas">Trạm Xăng</option>
+          </select>
+        </div>
+
+        <div class="form_text">
+          <select v-model="typeRange">
+            <option value="1">1km</option>
+            <option value="3">3km</option>
+            <option value="5">5km</option>
+            <option value="10">10km</option>
+            <option value="100">100km</option>
+          </select>
+        </div>
+
+        <TextButton :title="'Tìm gần nhất trên google map'" @click="findCloser" />
       </div>
     </form>
     <div id="map"></div>
@@ -32,10 +50,12 @@
 import {
   ref,
   onMounted,
+  reactive,
 } from 'vue';
 import { API_KEY, API_URL } from '@/services/configAPI';
 import { currentLocation } from '@/services/googleMapAPI';
 import { autocomplete } from '@/services/googleAutocompleteAPI';
+import { nearBySearch } from '@/services/googleNearBySearch';
 
 export default {
   name: "UserLocation",
@@ -43,12 +63,12 @@ export default {
     const errorMessage = ref('');
     const address = ref('');
     const isLoadingSpin = ref(false);
-
-    const submitForm = () => {
-      console.log('submit form');
-
-
-    }
+    const typeSearch = ref('restaurant');
+    const typeRange = ref(1);
+    const coordinates = reactive({
+      lat: 0,
+      lng: 0
+    })
 
     const getLocator = () => {
       if(!navigator && !navigator.geolocation) {
@@ -75,16 +95,17 @@ export default {
     }
 
     const showPosition = position => {
-      // console.log('latitude: ', position.coords.latitude);
-      // console.log('longitude: ', position.coords.longitude);
-      fetchLocation(position.coords.latitude, position.coords.longitude);
-      showUserLocationOnTheMap(position.coords.latitude, position.coords.longitude);
+      coordinates.lat = position.coords.latitude;
+      coordinates.lng = position.coords.longitude;
+
+      fetchLocation(coordinates.lat, coordinates.lng);
+      showUserLocationOnTheMap(coordinates.lat, coordinates.lng);
     }
 
     const fetchLocation = async (latitude, longitude) => {
       const response = await currentLocation(latitude, longitude);
 
-      console.log('response: ', response);
+      // console.log('response: ', response);
 
       if(response.error_message) {
         return catchError(response);
@@ -101,6 +122,29 @@ export default {
       const TIMEOUT_MS = 3000;
       setTimeout(() => { errorMessage.value = '' }, TIMEOUT_MS);
       isLoadingSpin.value = false;
+    }
+
+    const findCloser = async () => {
+
+      // console.log('typeSearch: ', typeSearch)
+      // console.log('typeRange: ', typeRange)
+
+      const response = await nearBySearch({
+        latitude: coordinates.lat,
+        longitude: coordinates.lng,
+        typeSearch: typeSearch.value,
+        typeRange: typeRange.value,
+      });
+
+      if(response.error_message) {
+        return catchError(response);
+      }
+
+      console.log('response list data: ', response);
+
+      
+      
+
     }
 
     onMounted(() => {
@@ -130,10 +174,13 @@ export default {
 
     return {
       errorMessage,
-      submitForm,
       getLocator,
       address,
       isLoadingSpin,
+      // coordinates, //can return if need reactive on template
+      findCloser,
+      typeSearch,
+      typeRange,
     }
   }
 }
