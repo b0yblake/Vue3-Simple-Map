@@ -24,8 +24,10 @@
 
         <div class="form_text">
           <select v-model="typeSearch">
-            <option value="restaurant">Nhà Hàng</option>
-            <option value="gas">Trạm Xăng</option>
+            <option value="restaurant">Restaurant</option>
+            <option value="gas">Gas Station</option>
+            <option value="bus">Bus Station</option>
+            <option value="Hotel">Hotel</option>
           </select>
         </div>
 
@@ -39,7 +41,7 @@
           </select>
         </div>
 
-        <TextButton :title="'Tìm gần nhất trên google map'" @click="findCloser" />
+        <TextButton :title="'Find your destination closest'" @click="findCloser" />
       </div>
     </form>
     <div id="map"></div>
