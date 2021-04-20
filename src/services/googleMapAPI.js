@@ -1,4 +1,4 @@
-import { API_KEY, API_URL } from './configAPI';
+import { API_KEY, API_URL, PROXY_URL } from './configAPI';
 
 export const currentLocation = async (latitude = 0, longitude = 0) =>
   await fetch(
