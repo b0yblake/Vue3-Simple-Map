@@ -56,6 +56,6 @@ css: {
 
 ### Plugin uses  ✔
 - `Auto import components` instead of declare in each files: https://github.com/antfu/vite-plugin-components
-- `Axios` 
+- `Fetch instead of Axios` https://fetch.spec.whatwg.org/ 
 - `Google Maps JavaScript API` & `Google Maps Geocoding API` & `Google Maps Places API` free trail 3 months.
 - `Deploy Netlify` & `Virtual bypass CORS: Heroku` https://github.com/Rob--W/cors-anywhere
