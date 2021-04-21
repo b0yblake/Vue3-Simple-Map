@@ -1,11 +1,11 @@
-## `GOOGLE MAP DIRECTION 🌍`
-<img src="@img-readme/full.jpg" alt="" width="500px" height="auto"><br/>
+<h1 align="center">GOOGLE MAP DIRECTION 🌍</h1>
 
-## `Quickstart with Vite 2.x + Vue 3.x + Tailwind 2.x & all common setup`
+<img src="@img-readme/full.jpg" alt="" width="100%" height="auto"><br/>
+
+## Quickstart with Vite 2.x + Vue 3.x + Tailwind 2.x & all common setup
 ![vvt](https://user-images.githubusercontent.com/11320080/111277027-a9384c00-8640-11eb-8323-21889bd7c609.png)
 This starter template also includes:
 - [Vue Router 4.x](https://github.com/vuejs/vue-router-next)
-- [Inter var font]
 - [Just-in-Time](https://tailwindcss.com/docs/just-in-time-mode) mode by default introduced in Tailwind CSS v2.1 (in preview!)
 First-party plugins needed for Tailwind UI:
 - [tailwindcss/forms](https://github.com/tailwindlabs/tailwindcss-forms)
@@ -28,14 +28,10 @@ yarn build
 yarn serve
 ```
 
-### Deploy to netlify 🌍
-
-- 
-
 ### New features of Vue3 uses ✔
 
+- Use `ref & reactive` (ref for `String, Number, Array, Boolean, Symbol` || reactive for `Object`)
 - 
--
 
 
 ### New features of vite uses ✔
@@ -57,12 +53,9 @@ css: {
 // 
 
 ```
-- 
-
 
 ### Plugin uses  ✔
-
 - `Auto import components` instead of declare in each files: https://github.com/antfu/vite-plugin-components
 - `Axios` 
 - `Google Maps JavaScript API` & `Google Maps Geocoding API` & `Google Maps Places API` free trail 3 months.
-- 
+- `Deploy Netlify` & `Virtual bypass CORS: Heroku` https://github.com/Rob--W/cors-anywhere
