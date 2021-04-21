@@ -43,7 +43,7 @@
       </div>
       <div class="list_places flex flex-col mt-5">
         <ul>
-          <li v-for="(item, index) in places" :key="`${places.id}_${index}`" class="flex flex-row mt-4 content-center items-center">
+          <li v-for="(item, index) in places" :key="`${places.id}_${index}`" @click="showInfoWindow(index)" class="flex flex-row mt-4 content-center items-center">
             <div class="border border-gray-400 p-2 mr-2">
               <img :src="item.icon" width="20" height="20" class="" />
             </div>
@@ -83,6 +83,7 @@ export default {
       lng: 0
     });
     const places = ref([]);
+    const markers = ref([]);
 
     const getLocator = () => {
       if(!navigator && !navigator.geolocation) {
@@ -180,11 +181,20 @@ export default {
         map: map,
         icon: ico_marker,
       })
+
+      // Push each marker to markers ref[]
+      markers.value.push(marker);
+
       google.maps.event.addListener(marker, "click", () => {
         const infoWindow = new google.maps.InfoWindow();
         infoWindow.setContent(`<div class="">${name}</div>`);
         infoWindow.open(map, marker);
       })
+    }
+
+    const showInfoWindow = (index) => {
+      // Add trigger to list item when click to show pop
+      const newShowWindow = new google.maps.event.trigger(markers.value[index], "click");
     }
 
     onMounted(() => {
@@ -229,6 +239,7 @@ export default {
       typeSearch,
       typeRange,
       places,
+      showInfoWindow,
     }
   }
 }
