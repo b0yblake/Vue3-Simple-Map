@@ -1,5 +1,3 @@
-import { API_KEY, API_URL, PROXY_URL } from './configAPI';
-
 export const nearBySearch = async (optionSearchBy = {
   latitude: 0,
   longitude: 0,
@@ -7,7 +5,7 @@ export const nearBySearch = async (optionSearchBy = {
   typeRange: 1,
 }) =>
   await fetch(
-    `${PROXY_URL+API_URL}/place/nearbysearch/json?location=${optionSearchBy.latitude},${optionSearchBy.longitude}&type=${optionSearchBy.typeSearch}&radius=${optionSearchBy.typeRange * 1000}&key=${API_KEY}`
+    `${import.meta.env.VITE_PROXY_URL+import.meta.env.VITE_API_URL}/place/nearbysearch/json?location=${optionSearchBy.latitude},${optionSearchBy.longitude}&type=${optionSearchBy.typeSearch}&radius=${optionSearchBy.typeRange * 1000}&key=${import.meta.env.VITE_API_KEY}`
   )
   .then(
     function(response) {
