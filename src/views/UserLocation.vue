@@ -65,7 +65,6 @@ import {
   onMounted,
   reactive,
 } from 'vue';
-import { API_KEY, API_URL } from '@/services/configAPI';
 import { currentLocation } from '@/services/googleMapAPI';
 import { autocomplete } from '@/services/googleAutocompleteAPI';
 import { nearBySearch } from '@/services/googleNearBySearch';
@@ -198,7 +197,7 @@ export default {
     }
 
     onMounted(() => {
-      autocomplete(`${API_URL}/js?libraries=places&key=${API_KEY}`)
+      autocomplete(`${import.meta.env.VITE_API_URL}/js?libraries=places&key=${import.meta.env.VITE_API_KEY}`)
       .then(() => {
         // Script is loaded, do something
         console.log('ok');
