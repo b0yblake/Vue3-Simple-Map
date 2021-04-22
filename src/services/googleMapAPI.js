@@ -1,8 +1,6 @@
-import { API_KEY, API_URL, PROXY_URL } from './configAPI';
-
 export const currentLocation = async (latitude = 0, longitude = 0) =>
   await fetch(
-    `${API_URL}/geocode/json?latlng=${latitude},${longitude}&key=${API_KEY}`
+    `${import.meta.env.VITE_API_URL}/geocode/json?latlng=${latitude},${longitude}&key=${import.meta.env.VITE_API_KEY}`
   )
   .then(
     function(response) {
